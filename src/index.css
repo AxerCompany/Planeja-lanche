@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-royal-blue: #2563EB;
+  --color-emerald-green: #10B981;
+  --color-vibrant-coral: #FF6B6B;
+  --color-warm-yellow: #FFC83D;
+  --color-clean-white: #FFFFFF;
+  --color-neutral-gray: #F3F4F6;
+}
+
+body {
+  @apply bg-neutral-gray text-slate-900 font-sans;
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
+}
