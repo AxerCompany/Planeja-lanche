@@ -182,13 +182,13 @@ const HorizontalCarousel = () => {
 
   return (
     <div className="w-full mb-16 relative">
-      <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar px-4 md:px-0">
+      <div className="flex gap-4 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar px-4 md:px-0">
         {images.map((img, i) => (
           <div 
             key={i} 
-            className="w-[240px] md:w-[280px] h-[420px] md:h-[500px] rounded-[2.5rem] overflow-hidden border-[6px] border-text-primary/5 shadow-2xl shrink-0 snap-center first:ml-auto last:mr-auto"
+            className="w-[280px] md:w-[320px] h-auto aspect-[9/19] rounded-2xl overflow-hidden border border-border-soft shadow-xl shrink-0 snap-center first:ml-auto last:mr-auto bg-white"
           >
-            <img src={img} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            <img src={img} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
           </div>
         ))}
       </div>
@@ -236,11 +236,11 @@ const Features = () => {
           
           <div className="grid sm:grid-cols-2 gap-4 w-full max-w-4xl">
             {items.map((item, idx) => (
-              <div key={idx} className="flex items-center justify-center gap-4 p-5 bg-bg-beige rounded-2xl border border-border-soft">
+              <div key={idx} className="flex items-center justify-start gap-4 p-5 px-8 bg-bg-beige rounded-2xl border border-border-soft">
                 <div className="w-8 h-8 bg-dark-green text-white rounded-full flex items-center justify-center shrink-0">
                   <Check size={18} strokeWidth={3} />
                 </div>
-                <span className="font-bold text-text-secondary text-sm md:text-base">{item}</span>
+                <span className="font-bold text-text-secondary text-sm md:text-base text-left">{item}</span>
               </div>
             ))}
           </div>
