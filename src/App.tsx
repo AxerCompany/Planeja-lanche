@@ -102,25 +102,25 @@ const HowItWorks = () => {
     {
       icon: <Refrigerator size={32} />,
       title: "Inventário Inteligente",
-      desc: "Digite o que você tem na geladeira e o app sugere receitas com o que já está disponível.",
+      desc: <><strong>Digite o que você tem na geladeira</strong> e o app sugere receitas com o que <strong>voce tem disponivel no momento</strong></>,
       color: "bg-primary-green"
     },
     {
       icon: <UserCircle size={32} />,
       title: "Perfil Personalizado",
-      desc: "Configure restrições (sem glúten, lactose) e preferências para lanches que seu filho realmente vai comer.",
+      desc: <><strong>Configure restrições (sem glúten, lactose, ou qualquer outra restrição)</strong> e preferências para lanches que seu filho realmente vai comer.</>,
       color: "bg-dark-green"
     },
     {
       icon: <Wand2 size={32} />,
       title: "Plano em 1 Clique",
-      desc: "Gere o cardápio da semana inteira e receba a lista de compras organizada automaticamente.",
+      desc: <><strong>Gere o cardápio da semana inteira</strong> e receba a lista de compras organizada automaticamente.</>,
       color: "bg-primary-green"
     },
     {
       icon: <Clock size={32} />,
       title: "Preparo e Montagem",
-      desc: "Receba o passo a passo detalhado de preparo e montagem de cada lanche para facilitar sua rotina.",
+      desc: <><strong>Receba o passo a passo detalhado</strong> de preparo e montagem de cada lanche para facilitar sua rotina.</>,
       color: "bg-light-green"
     }
   ];
@@ -143,9 +143,6 @@ const HowItWorks = () => {
               whileHover={{ y: -12 }}
               className="group p-8 rounded-[3rem] bg-card-white border border-border-soft shadow-2xl shadow-text-primary/5 relative flex flex-col items-center text-center transition-all duration-500"
             >
-              <div className="absolute top-6 right-8 text-5xl font-black text-bg-beige group-hover:text-border-soft transition-colors">
-                0{idx + 1}
-              </div>
               <div className={`w-16 h-16 ${step.color} text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
                 <div className="w-8 h-8 flex items-center justify-center">
                   {step.icon}
@@ -177,16 +174,18 @@ const HorizontalCarousel = () => {
     "https://i.postimg.cc/23pJkpFn/Whats_App_Image_2026_02_25_at_12_10_55_(1).webp",
     "https://i.postimg.cc/jCV9xVQN/Whats_App_Image_2026_02_25_at_12_10_55_(2).webp",
     "https://i.postimg.cc/gr95z9qL/Whats_App_Image_2026_02_25_at_12_10_55_(3).webp",
-    "https://i.postimg.cc/23pJkpF1/Whats_App_Image_2026_02_25_at_12_10_55_(5).webp"
+    "https://i.postimg.cc/Jnpr7CxG/Whats-App-Image-2026-02-25-at-12-15-34.webp",
+    "https://i.postimg.cc/23pJkpF1/Whats_App_Image_2026_02_25_at_12_10_55_(5).webp",
+    "https://i.postimg.cc/7hX2yRGM/Whats-App-Image-2026-02-25-at-12-10-55-(6).webp"
   ];
 
   return (
     <div className="w-full mb-16 relative">
-      <div className="flex gap-4 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar px-4 md:px-0">
+      <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar px-6 md:px-[25%] lg:px-[35%]">
         {images.map((img, i) => (
           <div 
             key={i} 
-            className="w-[280px] md:w-[320px] h-auto aspect-[9/19] rounded-2xl overflow-hidden border border-border-soft shadow-xl shrink-0 snap-center first:ml-auto last:mr-auto bg-white"
+            className="w-[80vw] sm:w-[300px] md:w-[350px] h-auto aspect-[9/19] rounded-2xl overflow-hidden border border-border-soft shadow-xl shrink-0 snap-center bg-white"
           >
             <img src={img} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
           </div>
@@ -253,16 +252,19 @@ const Features = () => {
 const Testimonials = () => {
   const reviews = [
     {
-      text: "Eu não fico mais perdida na hora do lanche. Abro o app e ele já me diz o que fazer com o que tenho.",
-      role: "Mãe do Theo"
+      text: "Eu sempre ficava perdida na hora de montar uma lancheira que o Matheus comesse sempre, depois que comecei a usar esse app não fico mais sem ideia e nem ele sem comer rsrs adorei super recomendo!",
+      role: "Mãe do Matheus",
+      image: "https://i.postimg.cc/0NCnC7tX/image_14_300x300.webp"
     },
     {
-      text: "Meu filho tem restrição e agora ficou muito mais fácil. O app adapta tudo automaticamente.",
-      role: "Mãe da Alice"
+      text: "Meu filho é alérgico a ovo, sempre foi uma luta com a alimentação dele. Confesso que esse app tem sido uma mão na roda aqui em casa, ele gera certinho várias receitas deliciosas que não vai ovo, estou amando o app.",
+      role: "Mãe do Pedro",
+      image: "https://i.postimg.cc/CKwHdzFq/image_13_229x300.webp"
     },
     {
-      text: "Em 1 clique eu já tenho a semana pronta. Economizei tempo e dinheiro no mercado.",
-      role: "Mãe do Lucas"
+      text: "Sempre achei difícil organizar a semana de lanches do meu filho por falta de criatividade e tempo pois trabalho fora. Essa opção de gerar o lanche com o que tem disponível na geladeira é simplesmente incrível, me ajuda muito sendo mãe solo e tendo que cuidar de tudo.",
+      role: "Mãe do Lucas",
+      image: "https://i.postimg.cc/0QQZ1rBw/download_(18).jpg"
     }
   ];
 
@@ -274,18 +276,18 @@ const Testimonials = () => {
             Mães que transformaram sua rotina
           </h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {reviews.map((review, idx) => (
-            <div key={idx} className="p-10 rounded-[2.5rem] bg-card-white border border-border-soft shadow-lg">
-              <div className="flex gap-1 mb-6 text-light-green">
-                {[1, 2, 3, 4, 5].map(s => <Star key={s} size={20} fill="currentColor" />)}
+            <div key={idx} className="p-8 rounded-3xl bg-white border border-border-soft/30 shadow-sm flex flex-col h-full hover:shadow-md transition-shadow">
+              <div className="flex gap-0.5 mb-4 text-primary-green/60">
+                {[1, 2, 3, 4, 5].map(s => <Star key={s} size={14} fill="currentColor" />)}
               </div>
-              <p className="text-text-secondary font-bold text-lg mb-6 leading-relaxed">“{review.text}”</p>
+              <p className="text-text-secondary font-medium text-base mb-8 leading-relaxed flex-grow">“{review.text}”</p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary-green/10 rounded-full flex items-center justify-center font-black text-primary-green">
-                  {review.role[7]}
+                <div className="w-10 h-10 rounded-full overflow-hidden grayscale-[0.5] hover:grayscale-0 transition-all shrink-0">
+                  <img src={review.image} alt={review.role} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
-                <p className="font-black text-text-primary">{review.role}</p>
+                <p className="font-bold text-text-primary text-xs uppercase tracking-wider">{review.role}</p>
               </div>
             </div>
           ))}
@@ -296,52 +298,41 @@ const Testimonials = () => {
 };
 
 const Bonus = () => {
-  const bonuses = [
-    {
-      title: "Guia Prático para Crianças Seletivas",
-      subtitle: "Como Fazer Seu Filho Comer Melhor Sem Briga",
-      desc: "Estratégias práticas para acabar com as brigas na hora da refeição e incentivar seu filho a provar novos alimentos de forma leve.",
-      value: "R$ 67,00",
-      icon: <UserCircle size={32} />
-    },
-    {
-      title: "Planner de Lancheira + Controle de Saúde",
-      subtitle: "Planner de Lancheira + Controle de Hábitos Alimentares",
-      desc: "Planner semanal imprimível, checklist diário, controle de evolução mensal, tabela de recompensas e desafio 21 dias. Conecta direto com a aba Saúde do app.",
-      value: "R$ 47,00",
-      icon: <Calendar size={32} />
-    }
-  ];
+  const bonus = {
+    title: "Guia Prático para Crianças Seletivas",
+    subtitle: "Como Fazer Seu Filho Comer Melhor Sem Briga",
+    desc: "Estratégias práticas para acabar com as brigas na hora da refeição e incentivar seu filho a provar novos alimentos de forma leve.",
+    value: "R$ 67,00",
+    icon: <UserCircle size={32} />
+  };
 
   return (
     <section className="py-24 bg-card-white">
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black text-text-primary mb-4">
-            Bônus Exclusivos para Você
+            Bônus Exclusivo para Você
           </h2>
-          <p className="text-text-secondary font-medium">Garantindo seu acesso hoje, você leva esses dois presentes de graça.</p>
+          <p className="text-text-secondary font-medium">Garantindo seu acesso hoje, você leva esse presente de graça.</p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          {bonuses.map((bonus, idx) => (
-            <div key={idx} className={`p-10 rounded-[3rem] relative overflow-hidden shadow-2xl transition-all hover:scale-[1.02] ${idx === 0 ? 'bg-primary-green text-white shadow-primary-green/20' : 'bg-text-primary text-white shadow-text-primary/20'}`}>
-              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Gift size={100} />
+        <div className="flex justify-center">
+          <div className="w-full max-w-xl p-10 rounded-[3rem] relative overflow-hidden shadow-2xl transition-all hover:scale-[1.02] bg-primary-green text-white shadow-primary-green/20">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <Gift size={100} />
+            </div>
+            <div className="relative z-10">
+              <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">Bônus Exclusivo</div>
+              <div className="mb-6 w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
+                {bonus.icon}
               </div>
-              <div className="relative z-10">
-                <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">Bônus 0{idx + 1}</div>
-                <div className="mb-6 w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
-                  {bonus.icon}
-                </div>
-                <h3 className="text-xl md:text-2xl font-black mb-2 leading-tight">{bonus.title}</h3>
-                <p className="text-sm font-bold opacity-80 mb-4 italic">{bonus.subtitle}</p>
-                <p className="text-white/70 text-sm font-medium mb-8 leading-relaxed">{bonus.desc}</p>
-                <div className="pt-6 border-t border-white/10 text-white font-black text-lg uppercase italic">
-                  Valor: <span className="line-through opacity-50">{bonus.value}</span> <span className="text-light-green ml-2">Grátis</span>
-                </div>
+              <h3 className="text-xl md:text-2xl font-black mb-2 leading-tight">{bonus.title}</h3>
+              <p className="text-sm font-bold opacity-80 mb-4 italic">{bonus.subtitle}</p>
+              <p className="text-white/70 text-sm font-medium mb-8 leading-relaxed">{bonus.desc}</p>
+              <div className="pt-6 border-t border-white/10 text-white font-black text-lg uppercase italic">
+                Valor: <span className="line-through opacity-50">{bonus.value}</span> <span className="text-light-green ml-2">Grátis</span>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
