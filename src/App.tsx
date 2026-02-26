@@ -81,11 +81,11 @@ const Hero = () => (
           <span>INTELIGÊNCIA APLICADA À MATERNIDADE</span>
         </div>
         <h1 className="text-2xl md:text-4xl font-black text-text-primary leading-tight mb-6 max-w-2xl">
-          Transforme o que tem na sua geladeira em lanches rápidos, práticos e saudáveis.
+          Transforme o que tem na sua geladeira em lanches rápidos, práticos e saudáveis para o seu filho.
         </h1>
         <div className="flex flex-col items-center gap-10 w-full">
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl font-medium leading-relaxed">
-            Com um clique, o app gera receitas inteligentes, adapta para restrições alimentares e ainda monta a semana inteira com lista de compras pronta.
+            Receba ideias rápidas, inteligentes e divertidas usando apenas os ingredientes que você já tem em casa.
           </p>
           
           <div className="flex flex-col items-center">
@@ -101,27 +101,21 @@ const HowItWorks = () => {
   const steps = [
     {
       icon: <Refrigerator size={32} />,
-      title: "Inventário Inteligente",
-      desc: <><strong>Digite o que você tem na geladeira</strong> e o app sugere receitas com o que <strong>voce tem disponivel no momento</strong></>,
+      title: "1. Abra sua geladeira e veja o que você tem",
+      desc: "Olhe os ingredientes disponíveis naquele momento. Pode ser pão, ovo, banana, queijo, frutas… o que tiver aí. Nada de sair comprando coisas novas.",
       color: "bg-primary-green"
     },
     {
-      icon: <UserCircle size={32} />,
-      title: "Perfil Personalizado",
-      desc: <><strong>Configure restrições (sem glúten, lactose, ou qualquer outra restrição)</strong> e preferências para lanches que seu filho realmente vai comer.</>,
+      icon: <Smartphone size={32} />,
+      title: "2. Digite os ingredientes no app",
+      desc: "Você informa o que tem na geladeira. Em segundos, o app entende sua necessidade e começa a gerar sugestões inteligentes.",
       color: "bg-dark-green"
     },
     {
       icon: <Wand2 size={32} />,
-      title: "Plano em 1 Clique",
-      desc: <><strong>Gere o cardápio da semana inteira</strong> e receba a lista de compras organizada automaticamente.</>,
+      title: "3. Gere o lanche ideal em segundos",
+      desc: "Com um clique, o app cria ideias práticas usando apenas o que você tem. Você escolhe a receita que mais gostou e segue o passo a passo simples para preparar. Rápido. Prático. Pensado para crianças.",
       color: "bg-primary-green"
-    },
-    {
-      icon: <Clock size={32} />,
-      title: "Preparo e Montagem",
-      desc: <><strong>Receba o passo a passo detalhado</strong> de preparo e montagem de cada lanche para facilitar sua rotina.</>,
-      color: "bg-light-green"
     }
   ];
 
@@ -129,29 +123,26 @@ const HowItWorks = () => {
     <section className="py-20 bg-bg-beige overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-black text-text-primary mb-6">
-            Como o Planeja Lanche facilita sua vida
+          <h2 className="text-2xl md:text-3xl font-black text-text-primary tracking-tight">
+            Da sua geladeira direto para a lancheira — veja como funciona
           </h2>
-          <p className="text-text-secondary font-medium max-w-2xl mx-auto">
-            Uma solução completa que vai desde a escolha dos ingredientes até o lanche pronto na lancheira.
-          </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {steps.map((step, idx) => (
             <motion.div 
               key={idx}
-              whileHover={{ y: -12 }}
-              className="group p-8 rounded-[3rem] bg-card-white border border-border-soft shadow-2xl shadow-text-primary/5 relative flex flex-col items-center text-center transition-all duration-500"
+              whileHover={{ y: -5 }}
+              className="group p-8 rounded-3xl bg-white border border-border-soft shadow-sm flex flex-col items-start text-left transition-all duration-300"
             >
-              <div className={`w-16 h-16 ${step.color} text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
-                <div className="w-8 h-8 flex items-center justify-center">
+              <div className={`w-14 h-14 ${step.color} text-white rounded-2xl flex items-center justify-center mb-8 shadow-md`}>
+                <div className="w-7 h-7 flex items-center justify-center">
                   {step.icon}
                 </div>
               </div>
               <h3 className="text-xl font-black text-text-primary mb-4 leading-tight">
                 {step.title}
               </h3>
-              <p className="text-text-secondary font-medium text-sm leading-relaxed">
+              <p className="text-text-secondary font-medium text-base leading-relaxed opacity-90">
                 {step.desc}
               </p>
             </motion.div>
