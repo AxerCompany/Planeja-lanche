@@ -67,9 +67,20 @@ const ImageCarousel = () => {
   );
 };
 
+const VideoVSL = () => (
+  <div className="w-full max-w-[320px] aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-2xl bg-black mb-10 relative group">
+    <iframe
+      src="https://player.vimeo.com/video/1168686523?badge=0&autopause=0&player_id=0&app_id=58479"
+      className="absolute top-0 left-0 w-full h-full"
+      allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+      title="Mini VSL Planeja Lanche"
+    ></iframe>
+  </div>
+);
+
 const Hero = () => (
   <section className="pt-16 pb-12 px-4 overflow-hidden bg-card-white">
-    <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+    <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -80,17 +91,15 @@ const Hero = () => (
           <Zap size={12} />
           <span>INTELIGÊNCIA APLICADA À MATERNIDADE</span>
         </div>
-        <h1 className="text-2xl md:text-4xl font-black text-text-primary leading-tight mb-6 max-w-2xl">
+        <h1 className="text-2xl md:text-4xl font-bold text-text-primary leading-tight mb-4 max-w-2xl">
           Transforme o que tem na sua geladeira em lanches rápidos, práticos e saudáveis para o seu filho.
         </h1>
-        <div className="flex flex-col items-center gap-10 w-full">
-          <p className="text-lg md:text-xl text-text-secondary max-w-2xl font-medium leading-relaxed">
+        <div className="flex flex-col items-center gap-6 w-full">
+          <p className="text-base md:text-lg text-text-secondary max-w-xl font-medium leading-relaxed mb-6">
             Receba ideias rápidas, inteligentes e divertidas usando apenas os ingredientes que você já tem em casa.
           </p>
           
-          <div className="flex flex-col items-center">
-            <ImageCarousel />
-          </div>
+          <VideoVSL />
         </div>
       </motion.div>
     </div>
