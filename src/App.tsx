@@ -452,12 +452,13 @@ const Pricing = () => (
               <span className="text-text-secondary font-bold text-xs uppercase tracking-widest mb-10">pagamento único • acesso imediato</span>
               
               {/* 5. Botão de CTA */}
-              <button className="w-full bg-primary-green hover:bg-dark-green text-white px-8 py-7 rounded-3xl text-xl font-black shadow-2xl shadow-primary-green/30 transition-all transform hover:scale-105 active:scale-95 mb-10 group">
-                <span className="flex items-center justify-center gap-2">
-                  LIBERAR MEU ACESSO
-                  <Zap size={20} className="group-hover:animate-bounce" />
-                </span>
-              </button>
+              <a 
+                href="https://pay.cakto.com.br/gzd66uu_788005"
+                className="w-full bg-primary-green hover:bg-dark-green text-white px-8 py-7 rounded-3xl text-xl font-black shadow-2xl shadow-primary-green/30 transition-all transform hover:scale-105 active:scale-95 mb-10 group flex items-center justify-center gap-2"
+              >
+                LIBERAR MEU ACESSO
+                <Zap size={20} className="group-hover:animate-bounce" />
+              </a>
               
               {/* Guarantee Highlight - More Prominent */}
               <div className="bg-card-white p-8 rounded-[2.5rem] border-2 border-primary-green/30 shadow-xl w-full relative overflow-hidden">
