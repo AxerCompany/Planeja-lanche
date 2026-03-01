@@ -222,7 +222,7 @@ const HowItWorks = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-3xl font-black text-text-primary tracking-tight">
-            Da sua geladeira direto para a lancheira — veja como funciona
+            veja como funciona o <span className="text-primary-green">planeja lanche</span>
           </h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
