@@ -20,9 +20,11 @@ import {
   UserCircle,
   Wand2,
   Check,
-  Gift
+  Gift,
+  Play
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import Player from '@vimeo/player';
 
 const ImageCarousel = () => {
   const images = [
@@ -67,16 +69,88 @@ const ImageCarousel = () => {
   );
 };
 
-const VideoVSL = () => (
-  <div className="w-full max-w-[320px] aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-2xl bg-black mb-10 relative group">
-    <iframe
-      src="https://player.vimeo.com/video/1168686523?badge=0&autopause=0&player_id=0&app_id=58479"
-      className="absolute top-0 left-0 w-full h-full"
-      allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-      title="Mini VSL Planeja Lanche"
-    ></iframe>
-  </div>
-);
+const VideoVSL = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const iframeRef = React.useRef<HTMLIFrameElement>(null);
+  const playerRef = React.useRef<Player | null>(null);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const player = new Player(iframeRef.current);
+      playerRef.current = player;
+      
+      player.on('play', () => setIsPlaying(true));
+      player.on('pause', () => setIsPlaying(false));
+      player.on('ended', () => {
+        player.setCurrentTime(0);
+        player.pause();
+        setIsPlaying(false);
+      });
+
+      return () => {
+        player.destroy();
+      };
+    }
+  }, []);
+
+  const handlePlay = () => {
+    if (playerRef.current) {
+      playerRef.current.play();
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center gap-4 mb-10 w-full max-w-[320px] mx-auto">
+      <div className="relative group w-full cursor-pointer" onClick={handlePlay}>
+        {/* Glow effect */}
+        <div className="absolute -inset-1 bg-primary-green/30 rounded-[2.6rem] blur-xl opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+        
+        <div className="relative w-full aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-2xl bg-black border-4 border-white/10">
+          <iframe
+            ref={iframeRef}
+            src="https://player.vimeo.com/video/1168686523?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
+            className="absolute top-0 left-0 w-full h-full"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            title="Mini VSL Planeja Lanche"
+          ></iframe>
+
+          {/* Play Overlay / Thumbnail */}
+          {!isPlaying && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-20 transition-opacity duration-500">
+              {/* Thumbnail Image */}
+              <img 
+                src="https://i.postimg.cc/h4Jtt9bY/Whats_App_Image_2026_02_25_at_12_13_17.webp" 
+                alt="Thumbnail" 
+                className="absolute inset-0 w-full h-full object-cover opacity-100"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+              
+              <div className="relative z-30 flex flex-col items-center">
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ repeat: Infinity, duration: 2 }}
+                  className="w-20 h-20 bg-primary-green rounded-full flex items-center justify-center shadow-2xl shadow-primary-green/50"
+                >
+                  <Play size={40} fill="white" className="text-white ml-2" />
+                </motion.div>
+                <p className="mt-6 text-white font-black text-lg uppercase tracking-widest drop-shadow-lg text-center px-4">
+                  Clique para Assistir
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      
+      {/* Call to action below video */}
+      <div className="flex items-center gap-2 text-primary-green font-black text-xs uppercase tracking-widest animate-bounce">
+        <Zap size={14} fill="currentColor" />
+        <span>Assista agora e descubra como</span>
+      </div>
+    </div>
+  );
+};
 
 const Hero = () => (
   <section className="pt-16 pb-12 px-4 overflow-hidden bg-card-white">
