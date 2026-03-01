@@ -332,15 +332,6 @@ const Features = () => {
               </div>
             ))}
           </div>
-
-          <div className="mt-16">
-            <button 
-              onClick={() => handleRedirect("https://pay.cakto.com.br/gzd66uu_788005")}
-              className="bg-primary-green hover:bg-dark-green text-white px-10 py-5 rounded-2xl font-black text-lg uppercase tracking-widest shadow-2xl shadow-primary-green/30 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
-            >
-              Quero o Planeja Lanche Agora
-            </button>
-          </div>
         </div>
       </div>
     </section>
@@ -390,15 +381,6 @@ const Testimonials = () => {
             </div>
           ))}
         </div>
-
-        <div className="mt-16 flex justify-center">
-          <button 
-            onClick={() => handleRedirect("https://pay.cakto.com.br/gzd66uu_788005")}
-            className="bg-primary-green hover:bg-dark-green text-white px-10 py-5 rounded-2xl font-black text-lg uppercase tracking-widest shadow-2xl shadow-primary-green/30 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            Quero ter essa facilidade também
-          </button>
-        </div>
       </div>
     </section>
   );
@@ -435,15 +417,9 @@ const Bonus = () => {
               <h3 className="text-xl md:text-2xl font-black mb-2 leading-tight">{bonus.title}</h3>
               <p className="text-sm font-bold opacity-80 mb-4 italic">{bonus.subtitle}</p>
               <p className="text-white/70 text-sm font-medium mb-8 leading-relaxed">{bonus.desc}</p>
-              <div className="pt-6 border-t border-white/10 text-white font-black text-lg uppercase italic mb-8">
+              <div className="pt-6 border-t border-white/10 text-white font-black text-lg uppercase italic">
                 Valor: <span className="line-through opacity-50">{bonus.value}</span> <span className="text-light-green ml-2">Grátis</span>
               </div>
-              <button 
-                onClick={() => handleRedirect("https://pay.cakto.com.br/gzd66uu_788005")}
-                className="w-full bg-white text-primary-green hover:bg-light-green hover:text-dark-green py-4 rounded-2xl font-black text-base uppercase tracking-widest transition-all transform hover:scale-105 active:scale-95 shadow-xl cursor-pointer"
-              >
-                Garantir Bônus + Acesso
-              </button>
             </div>
           </div>
         </div>
@@ -529,8 +505,7 @@ const Pricing = () => {
                   { text: "Gerador de receitas inteligente", isBonus: false },
                   { text: "Plano semanal em 1 clique", isBonus: false },
                   { text: "Lista de compras automática", isBonus: false },
-                  { text: "Guia: Crianças Seletivas", isBonus: true },
-                  { text: "Planner + Controle de Saúde", isBonus: true }
+                  { text: "Guia: Crianças Seletivas", isBonus: true }
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-4 font-bold">
                     <div className={`w-6 h-6 ${item.isBonus ? 'bg-dark-green/20 text-dark-green' : 'bg-dark-green/20 text-dark-green'} rounded-full flex items-center justify-center shrink-0`}>
