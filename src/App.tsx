@@ -26,6 +26,21 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import Player from '@vimeo/player';
 
+const handleRedirect = (baseUrl: string) => {
+  const search = window.location.search;
+  if (!search) {
+    window.location.href = baseUrl;
+    return;
+  }
+  
+  // Remove leading '?' from search
+  const cleanSearch = search.startsWith('?') ? search.substring(1) : search;
+  // Determine separator
+  const separator = baseUrl.includes('?') ? '&' : '?';
+  
+  window.location.href = `${baseUrl}${separator}${cleanSearch}`;
+};
+
 const ImageCarousel = () => {
   const images = [
     "https://picsum.photos/seed/app1/400/800",
@@ -144,9 +159,9 @@ const VideoVSL = () => {
       </div>
       
       {/* Call to action below video */}
-      <div className="flex items-center gap-2 text-primary-green font-black text-xs uppercase tracking-widest animate-bounce">
-        <Zap size={14} fill="currentColor" />
-        <span>Assista agora e descubra como</span>
+      <div className="flex items-center gap-2 text-text-secondary font-bold text-[10px] md:text-xs uppercase tracking-widest opacity-70">
+        <Zap size={12} fill="currentColor" className="text-primary-green" />
+        <span>Assista o vídeo de 1 min acima e entenda como funciona o app</span>
       </div>
     </div>
   );
@@ -317,6 +332,15 @@ const Features = () => {
               </div>
             ))}
           </div>
+
+          <div className="mt-16">
+            <button 
+              onClick={() => handleRedirect("https://pay.cakto.com.br/gzd66uu_788005")}
+              className="bg-primary-green hover:bg-dark-green text-white px-10 py-5 rounded-2xl font-black text-lg uppercase tracking-widest shadow-2xl shadow-primary-green/30 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              Quero o Planeja Lanche Agora
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -366,6 +390,15 @@ const Testimonials = () => {
             </div>
           ))}
         </div>
+
+        <div className="mt-16 flex justify-center">
+          <button 
+            onClick={() => handleRedirect("https://pay.cakto.com.br/gzd66uu_788005")}
+            className="bg-primary-green hover:bg-dark-green text-white px-10 py-5 rounded-2xl font-black text-lg uppercase tracking-widest shadow-2xl shadow-primary-green/30 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+          >
+            Quero ter essa facilidade também
+          </button>
+        </div>
       </div>
     </section>
   );
@@ -402,9 +435,15 @@ const Bonus = () => {
               <h3 className="text-xl md:text-2xl font-black mb-2 leading-tight">{bonus.title}</h3>
               <p className="text-sm font-bold opacity-80 mb-4 italic">{bonus.subtitle}</p>
               <p className="text-white/70 text-sm font-medium mb-8 leading-relaxed">{bonus.desc}</p>
-              <div className="pt-6 border-t border-white/10 text-white font-black text-lg uppercase italic">
+              <div className="pt-6 border-t border-white/10 text-white font-black text-lg uppercase italic mb-8">
                 Valor: <span className="line-through opacity-50">{bonus.value}</span> <span className="text-light-green ml-2">Grátis</span>
               </div>
+              <button 
+                onClick={() => handleRedirect("https://pay.cakto.com.br/gzd66uu_788005")}
+                className="w-full bg-white text-primary-green hover:bg-light-green hover:text-dark-green py-4 rounded-2xl font-black text-base uppercase tracking-widest transition-all transform hover:scale-105 active:scale-95 shadow-xl cursor-pointer"
+              >
+                Garantir Bônus + Acesso
+              </button>
             </div>
           </div>
         </div>
@@ -455,8 +494,9 @@ const FAQ = () => {
   );
 };
 
-const Pricing = () => (
-  <section className="py-24 px-4 bg-bg-beige">
+const Pricing = () => {
+  return (
+    <section className="py-24 px-4 bg-bg-beige">
     <div className="max-w-4xl mx-auto">
       {/* Extreme Scarcity Banner */}
       <div className="bg-dark-green text-white py-3 px-6 rounded-t-[2.5rem] flex items-center justify-center gap-3 animate-pulse">
@@ -526,13 +566,13 @@ const Pricing = () => (
               <span className="text-text-secondary font-bold text-xs uppercase tracking-widest mb-10">pagamento único • acesso imediato</span>
               
               {/* 5. Botão de CTA */}
-              <a 
-                href="https://pay.cakto.com.br/gzd66uu_788005"
-                className="w-full bg-primary-green hover:bg-dark-green text-white px-8 py-7 rounded-3xl text-xl font-black shadow-2xl shadow-primary-green/30 transition-all transform hover:scale-105 active:scale-95 mb-10 group flex items-center justify-center gap-2"
+              <button 
+                onClick={() => handleRedirect("https://pay.cakto.com.br/gzd66uu_788005")}
+                className="w-full bg-primary-green hover:bg-dark-green text-white px-8 py-7 rounded-3xl text-xl font-black shadow-2xl shadow-primary-green/30 transition-all transform hover:scale-105 active:scale-95 mb-10 group flex items-center justify-center gap-2 cursor-pointer"
               >
                 LIBERAR MEU ACESSO
                 <Zap size={20} className="group-hover:animate-bounce" />
-              </a>
+              </button>
               
               {/* Guarantee Highlight - More Prominent */}
               <div className="bg-card-white p-8 rounded-[2.5rem] border-2 border-primary-green/30 shadow-xl w-full relative overflow-hidden">
@@ -557,7 +597,8 @@ const Pricing = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const Footer = () => (
   <footer className="py-16 bg-card-white border-t border-border-soft text-center">
