@@ -126,14 +126,17 @@ const VideoVSL = () => {
           <iframe
             ref={iframeRef}
             src="https://player.vimeo.com/video/1168686523?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
-            className="absolute top-0 left-0 w-full h-full"
+            className={`absolute top-0 left-0 w-full h-full ${!isPlaying ? 'pointer-events-none' : ''}`}
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
             title="Mini VSL Planeja Lanche"
           ></iframe>
 
           {/* Play Overlay / Thumbnail */}
           {!isPlaying && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center z-20 transition-opacity duration-500">
+            <div 
+              className="absolute inset-0 flex flex-col items-center justify-center z-50 transition-opacity duration-500 cursor-pointer"
+              onClick={handlePlay}
+            >
               {/* Thumbnail Image */}
               <img 
                 src="https://i.postimg.cc/h4Jtt9bY/Whats_App_Image_2026_02_25_at_12_13_17.webp" 
@@ -143,7 +146,7 @@ const VideoVSL = () => {
               />
               <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
               
-              <div className="relative z-30 flex flex-col items-center">
+              <div className="relative z-[60] flex flex-col items-center pointer-events-none">
                 <motion.div
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ repeat: Infinity, duration: 2 }}
