@@ -13,6 +13,8 @@ import {
   Calendar, 
   RefreshCw, 
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Star,
   ShieldCheck,
   Zap,
@@ -252,6 +254,7 @@ const HowItWorks = () => {
 };
 
 const HorizontalCarousel = () => {
+  const scrollRef = React.useRef<HTMLDivElement>(null);
   const images = [
     "https://i.postimg.cc/h4Jtt9bY/Whats_App_Image_2026_02_25_at_12_13_17.webp",
     "https://i.postimg.cc/DfWwwqdM/Whats_App_Image_2026_02_25_at_12_13_17_(1).webp",
@@ -268,9 +271,44 @@ const HorizontalCarousel = () => {
     "https://i.postimg.cc/7hX2yRGM/Whats-App-Image-2026-02-25-at-12-10-55-(6).webp"
   ];
 
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const container = scrollRef.current;
+      const firstItem = container.firstElementChild as HTMLElement;
+      if (firstItem) {
+        const itemWidth = firstItem.offsetWidth;
+        const gap = 24; // gap-6 is 24px
+        const scrollStep = itemWidth + gap;
+        const { scrollLeft } = container;
+        const scrollTo = direction === 'left' ? scrollLeft - scrollStep : scrollLeft + scrollStep;
+        container.scrollTo({ left: scrollTo, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
-    <div className="w-full mb-16 relative">
-      <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar px-6 md:px-[25%] lg:px-[35%]">
+    <div className="w-full mb-16 relative group">
+      {/* Navigation Arrows */}
+      <button 
+        onClick={() => scroll('left')}
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-30 p-4 text-primary-green/50 hover:text-primary-green transition-all hidden md:flex cursor-pointer"
+        aria-label="Anterior"
+      >
+        <ChevronLeft size={48} strokeWidth={1.5} />
+      </button>
+      
+      <button 
+        onClick={() => scroll('right')}
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-30 p-4 text-primary-green/50 hover:text-primary-green transition-all hidden md:flex cursor-pointer"
+        aria-label="Próximo"
+      >
+        <ChevronRight size={48} strokeWidth={1.5} />
+      </button>
+
+      <div 
+        ref={scrollRef}
+        className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar px-6 md:px-[25%] lg:px-[35%]"
+      >
         {images.map((img, i) => (
           <div 
             key={i} 
